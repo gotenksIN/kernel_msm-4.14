@@ -1119,6 +1119,8 @@ struct ol_if_ops {
 	void (*dp_put_multi_pages)(uint32_t desc_type,
 				   struct qdf_mem_multi_page_t *pages);
 #endif
+	int (*dp_rx_get_pending)(ol_txrx_soc_handle soc);
+	/* TODO: Add any other control path calls required to OL_IF/WMA layer */
 };
 
 
@@ -1318,6 +1320,8 @@ struct cdp_peer_ops {
 					 uint8_t *peer_mac, bool val);
 	void (*set_peer_as_tdls_peer)(struct cdp_soc_t *soc, uint8_t vdev_id,
 				      uint8_t *peer_mac, bool val);
+	void (*peer_flush_frags)(struct cdp_soc_t *soc_hdl,
+				 uint8_t vdev_id, uint8_t *peer_mac);
 };
 
 /**

@@ -2310,7 +2310,7 @@ QDF_STATUS wmi_unified_cmd_send_over_qmi(struct wmi_unified *wmi_handle,
 
 	qdf_mem_zero(qdf_nbuf_data(buf), sizeof(WMI_CMD_HDR));
 	WMI_SET_FIELD(qdf_nbuf_data(buf), WMI_CMD_HDR, COMMANDID, cmd_id);
-	wmi_debug("Sending WMI_CMD_ID: %d over qmi", cmd_id);
+	wmi_debug("Sending WMI_CMD_ID: 0x%x over qmi", cmd_id);
 	status = qdf_wmi_send_recv_qmi(qdf_nbuf_data(buf),
 				       buflen + sizeof(WMI_CMD_HDR),
 				       wmi_handle,
@@ -2333,7 +2333,7 @@ static int __wmi_process_qmi_fw_event(void *wmi_cb_ctx, void *buf, int len)
 	wmi_buf_t evt_buf;
 	uint32_t evt_id;
 
-	if (!wmi_handle || !buf)
+	if (!wmi_handle || !buf || (len < WMI_MIN_HEAD_ROOM))
 		return -EINVAL;
 
 	evt_buf = wmi_buf_alloc(wmi_handle, len);
