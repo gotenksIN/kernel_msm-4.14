@@ -3261,7 +3261,7 @@ struct afe_param_id_usb_audio_dev_params {
  * Supported values: AFE_API_MINOR_VERSION_USB_AUDIO_CONFIG
  */
 	u32                  cfg_minor_version;
-/* Token of actual end USB aduio device */
+/* Token of actual end USB audio device */
 	u32                  dev_token;
 } __packed;
 
@@ -3336,7 +3336,7 @@ struct afe_param_id_usb_audio_cfg {
 	u16                  data_format;
 /* this field must be 0 */
 	u16                  reserved;
-/* device token of actual end USB aduio device */
+/* device token of actual end USB audio device */
 	u32                  dev_token;
 /* endianness of this interface */
 	u32                   endian;
@@ -11441,7 +11441,7 @@ struct afe_clk_set {
 	 * for enable and disable clock.
 	 *	"clk_freq_in_hz", "clk_attri", and "clk_root"
 	 *	are ignored in disable clock case.
-	 *	@values 
+	 *	@values
 	 *	- 0 -- Disabled
 	 *	- 1 -- Enabled  @tablebulletend
 	 */
